@@ -1,0 +1,8 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY hello.py .
+
+CMD ["python3", "hello.py"]
+EXPOSE 5000
