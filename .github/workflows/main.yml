@@ -1,0 +1,26 @@
+name: Docker CI - Hello App
+
+on:
+  push:
+    branches:
+      - main
+      - demo-*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: |
+          docker build -t hello-demo:1.0 .
+
+      - name: Run Docker container
+        run: |
+          docker run --rm hello-demo:1.0
